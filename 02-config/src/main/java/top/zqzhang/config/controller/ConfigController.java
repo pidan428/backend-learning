@@ -29,3 +29,4 @@ public class ConfigController {
         return "我的姓名是: " +this.myName + "我的工作是: " +myjob;
     }
 }
+
