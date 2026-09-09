@@ -1,0 +1,11 @@
+server:
+  port: 9999
+
+
+spring:
+  application:
+    name: 02-配置管理
+
+zqzhang:
+  name: 张子谦
+  job: 学生
