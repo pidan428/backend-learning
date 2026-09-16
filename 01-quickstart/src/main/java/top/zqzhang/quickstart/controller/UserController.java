@@ -14,4 +14,9 @@ public class UserController {
     public User getUserInfo(){
         return new User(1001L,"张三", LocalDate.of(2006,1,19));
     }
+
+    @GetMapping("/hello")
+    public String getHello(){
+        return "hello world";
+    }
 }
