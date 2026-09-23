@@ -1,0 +1,19 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: 03-日志管理
+  profiles:
+    active: dev
+  output:
+    ansi:
+      # 强制输出 ANSI 颜色（重定向到文件/管道时也保留）
+      enabled: always
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr([%thread]){red} %clr(%-5level) %clr(%logger{36}){cyan} [%X{traceId}] - %msg%n'
+  level:
+    root: info
+    top.zqzhang.logging: debug
