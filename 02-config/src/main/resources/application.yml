@@ -5,7 +5,36 @@ server:
 spring:
   application:
     name: 02-配置管理
+  profiles:
+      active: dev
+
 
 zqzhang:
   name: 张子谦
   job: 学生
+
+student:
+  name: 张子谦
+  age: 18
+  hobbies:
+      - 篮球
+      - 编程
+      - 阅读
+  scores:
+    chinese: 90
+  address:
+    province: 江苏省
+    city: 南京市
+  courses:
+    - name: 高等数学
+      credit: 4
+    - name: 大学英语
+      credit: 3
+
+app:
+  name: 配置管理模块
+  author: ${zqzhang.name}
+  port: 9999
+  max-count: 100
+  email: 12345679@qq.com
+  birthday: 2005-06-01
