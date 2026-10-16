@@ -1,0 +1,30 @@
+# 课后练习（进阶）：切换到 Druid 连接池，并打开监控页
+# 启动方式见 05-mybatis.md 步骤 10.4：
+#   mvn -pl 05-mybatis -Pdruid spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=druid"
+# 监控页地址 http://localhost:8005/druid/
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/back_learning?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    # Druid 参数，与 HikariCP 的对应关系见 05-mybatis.md 步骤 10.4 的对照表
+    druid:
+      initial-size: 5                  # 初始连接数
+      min-idle: 5                      # 最小空闲（对应 Hikari 的 minimum-idle）
+      max-active: 10                   # 池上限（对应 Hikari 的 maximum-pool-size）
+      max-wait: 3000                   # 取连接超时，毫秒（对应 Hikari 的 connection-timeout）
+      min-evictable-idle-time-millis: 600000   # 空闲回收（对应 Hikari 的 idle-timeout）
+      validation-query: SELECT 1
+      test-while-idle: true
+      stat-view-servlet:
+        enabled: true                  # 打开内置监控页
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: admin
+      filter:
+        stat:
+          enabled: true                # 统计 SQL 执行情况
+        wall:
+          enabled: true                # SQL 防火墙
