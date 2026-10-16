@@ -1,0 +1,28 @@
+server:
+  port: 8006
+spring:
+  application:
+    name: 06-redis 缓存模块
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 10   # 这里配置了 DB10，默认为 DB0
+      timeout: 3s
+      # Lettuce 默认多条命令复用同一个连接，池化后按连接池取用
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 2
+          max-wait: 1s
+
+mexu:
+  sms:
+    ccp:
+      serverIp: app.cloopen.com
+      port: 8883
+      accountSID: 2c94811c9f3cb45601a13804c28f623e   # 换成你控制台里的 ACCOUNT SID
+      accountToken: ca889afeadb44b06a7807bf9802d11aa                  # 换成你控制台里的 AUTH TOKEN
+      appId: 2c94811c9f3cb45601a13804c3006245        # 换成你控制台里的 APP ID
+      templateId: 1
